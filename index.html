@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayari | Rehabilitación Integral y Biomecánica Avanzada</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* 🎨 PALETA DE COLORES */
+        :root {
+            --azul-noche: #0B1B2B;
+            --azul-noche-claro: #0D1E30;
+            --azul-salud: #007AFF;
+            --dorado-miel: #D4AF37;
+            --dorado-hover: #C5A059;
+            --blanco: #F8F9FA;
+            --gris-texto: #A0AAB5;
+        }
+
+        /* Reseteo y Estilos Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--azul-noche);
+            color: var(--blanco);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, .nav-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Header (Encabezado) */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(11, 27, 43, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            color: var(--blanco);
+        }
+
+        .logo-container img {
+            height: 50px; /* Ajusta según tu logo */
+        }
+
+        .logo-text {
+            font-size: 24px;
+            color: var(--dorado-miel);
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--blanco);
+            font-weight: 400;
+            transition: color 0.3s;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: var(--azul-salud);
+        }
+
+        .btn-primary {
+            background-color: var(--dorado-miel);
+            color: var(--azul-noche);
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dorado-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Hero Section (Sección Principal) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            /* Fondo con degradado y patrón geométrico sutil (neuro-conexiones) */
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(0, 122, 255, 0.15), transparent 40%),
+                radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.1), transparent 40%),
+                linear-gradient(135deg, var(--azul-noche) 0%, var(--azul-noche-claro) 100%);
+            background-size: 100% 100%, 100% 100%, 100% 100%;
+            overflow: hidden;
+        }
+
+        /* Patrón de malla sutil */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+            margin-top: 60px;
+        }
+
+        .hero-tagline {
+            color: var(--azul-salud);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.1;
+            margin-bottom: 25px;
+            color: var(--blanco);
+        }
+
+        .hero h1 span {
+            color: var(--dorado-miel);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--gris-texto);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--blanco);
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            border: 2px solid var(--azul-salud);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 122, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Sección de servicios rápida (Para coincidir con tu FB) */
+        .servicios-rapidos {
+            padding: 80px 5%;
+            background-color: var(--azul-noche-claro);
+            text-align: center;
+        }
+
+        .servicios-rapidos h2 {
+            color: var(--dorado-miel);
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .grid-servicios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 122, 255, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--azul-salud);
+        }
+
+        .card h3 {
+            color: var(--azul-salud);
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--gris-texto);
+            font-size: 15px;
+        }
+
+        /* Responsive (Móviles) */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 5%;
+                gap: 15px;
+            }
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 38px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+            .hero-buttons {
+                flex-direction: column;
+            }
+            .btn-primary, .btn-secondary {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header>
+        <a href="#" class="logo-container">
+            <!-- REEMPLAZA 'logo-icono.png' POR EL NOMBRE DE TU ARCHIVO -->
+            <img src="logo-icono.png" alt="Sayari Logo">
+            <span class="logo-text">SAYARI</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#biomecanica">Biomecánica & Tecnología</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+        <a href="#contacto" class="btn-primary">Agendar Cita</a>
+    </header>
+
+    <!-- SECCIÓN PRINCIPAL (HERO) -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <span class="hero-tagline">El poder de volver a moverte</span>
+            <h1>Rehabilitación Integral y <span>Biomecánica Avanzada</span></h1>
+            <p>Restableciendo tu movilidad y calidad de vida con tecnología y ciencia clínica. <strong>Fisioterapia a domicilio</strong> personalizada para trauma, adulto mayor y funcionalidad.</p>
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn-primary">Reservar Evaluación</a>
+                <a href="#servicios" class="btn-secondary">Conocer Servicios</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN BREVE DE SERVICIOS (Basado en tu Facebook) -->
+    <section class="servicios-rapidos" id="servicios">
+        <h2>¿Cómo podemos ayudarte?</h2>
+        <div class="grid-servicios">
+            <div class="card">
+                <h3>Atención a Domicilio</h3>
+                <p>Llevamos la mejor tecnología y atención directamente a la comodidad de tu hogar.</p>
+            </div>
+            <div class="card">
+                <h3>Rehabilitación de Trauma</h3>
+                <p>Recuperación de lesiones musculares, óseas y articulares con enfoque biomecánico.</p>
+            </div>
+            <div class="card">
+                <h3>Adulto Mayor y Funcionalidad</h3>
+                <p>Mejoramos la autonomía, el equilibrio y la fuerza para una mejor calidad de vida.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
