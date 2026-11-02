@@ -235,11 +235,13 @@
 
         /* Responsive (Móviles) */
         /* Responsive (Móviles) */
+        /* Responsive (Móviles) */
         @media (max-width: 768px) {
             header {
+                position: relative; /* ¡LA MAGIA! Ya no flota, ahora empuja el contenido hacia abajo */
                 flex-direction: column;
-                padding: 15px 5%;
-                gap: 10px;
+                padding: 20px 5%;
+                gap: 15px;
             }
             nav ul {
                 gap: 15px;
@@ -249,23 +251,23 @@
             nav a {
                 font-size: 14px;
             }
-            /* Aquí está la magia para que no se corte el título */
             .hero {
                 height: auto; 
-                min-height: 100vh;
-                padding-top: 260px; /* Empuja el texto hacia abajo */
+                min-height: 80vh; /* Ajustamos la altura */
+                padding-top: 40px; /* Espacio normal desde el menú */
                 padding-bottom: 60px;
-                align-items: flex-start; 
+                align-items: center; 
             }
             .hero-content {
                 margin-top: 0;
             }
             .hero h1 {
-                font-size: 36px;
+                font-size: 34px;
                 line-height: 1.2;
             }
             .hero p {
                 font-size: 16px;
+                margin-bottom: 30px;
             }
             .hero-buttons {
                 flex-direction: column;
