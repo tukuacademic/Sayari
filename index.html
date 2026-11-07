@@ -16,6 +16,7 @@
             --dorado-hover: #C5A059;
             --blanco: #F8F9FA;
             --gris-texto: #A0AAB5;
+            --whatsapp-color: #25D366;
         }
 
         /* Reseteo y Estilos Base */
@@ -23,6 +24,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Hace que el menú baje suavemente */
         }
 
         body {
@@ -61,7 +66,7 @@
         }
 
         .logo-container img {
-            height: 50px; /* Ajusta según tu logo */
+            height: 50px;
         }
 
         .logo-text {
@@ -98,6 +103,7 @@
             font-family: 'Montserrat', sans-serif;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            display: inline-block;
         }
 
         .btn-primary:hover {
@@ -106,23 +112,20 @@
             box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
         }
 
-        /* Hero Section (Sección Principal) */
+        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
             padding: 0 5%;
             position: relative;
-            /* Fondo con degradado y patrón geométrico sutil (neuro-conexiones) */
             background: 
                 radial-gradient(circle at 15% 50%, rgba(0, 122, 255, 0.15), transparent 40%),
                 radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.1), transparent 40%),
                 linear-gradient(135deg, var(--azul-noche) 0%, var(--azul-noche-claro) 100%);
-            background-size: 100% 100%, 100% 100%, 100% 100%;
             overflow: hidden;
         }
 
-        /* Patrón de malla sutil */
         .hero::before {
             content: '';
             position: absolute;
@@ -184,6 +187,7 @@
             font-family: 'Montserrat', sans-serif;
             border: 2px solid var(--azul-salud);
             transition: all 0.3s ease;
+            display: inline-block;
         }
 
         .btn-secondary:hover {
@@ -191,19 +195,22 @@
             transform: translateY(-2px);
         }
 
-        /* Sección de servicios rápida (Para coincidir con tu FB) */
-        .servicios-rapidos {
+        /* Estilos generales de secciones */
+        .section-container {
             padding: 80px 5%;
-            background-color: var(--azul-noche-claro);
             text-align: center;
         }
 
-        .servicios-rapidos h2 {
+        .section-container h2 {
             color: var(--dorado-miel);
             margin-bottom: 40px;
             font-size: 32px;
         }
 
+        .bg-claro { background-color: var(--azul-noche-claro); }
+        .bg-oscuro { background-color: var(--azul-noche); }
+
+        /* Servicios */
         .grid-servicios {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -233,48 +240,118 @@
             font-size: 15px;
         }
 
-        /* Responsive (Móviles) */
-        /* Responsive (Móviles) */
-        /* Responsive (Móviles) */
+        /* Biomecánica y Nosotros */
+        .text-block {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            color: var(--gris-texto);
+            font-size: 16px;
+        }
+
+        .text-block p { margin-bottom: 15px; }
+        .text-block strong { color: var(--blanco); }
+
+        /* Sección Contacto */
+        .contacto-info {
+            color: var(--blanco);
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+        .contacto-email {
+            margin-top: 20px; 
+            font-size: 14px; 
+            color: var(--gris-texto);
+        }
+
+        /* Botón flotante de WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--whatsapp-color);
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        .whatsapp-float svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--azul-noche);
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer p {
+            color: var(--gris-texto);
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--dorado-miel);
+            text-decoration: none;
+            font-size: 14px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        /* 📱 RESPONSIVE (Móviles) */
         @media (max-width: 768px) {
             header {
-                position: relative; /* ¡LA MAGIA! Ya no flota, ahora empuja el contenido hacia abajo */
+                position: relative; /* El menú ya no flota, empuja el contenido */
                 flex-direction: column;
-                padding: 20px 5%;
+                padding: 15px 5%;
                 gap: 15px;
+                background-color: var(--azul-noche);
             }
+            
             nav ul {
                 gap: 15px;
                 flex-wrap: wrap;
                 justify-content: center;
             }
-            nav a {
-                font-size: 14px;
-            }
+            
+            nav a { font-size: 14px; }
+            
             .hero {
                 height: auto; 
-                min-height: 80vh; /* Ajustamos la altura */
-                padding-top: 40px; /* Espacio normal desde el menú */
+                min-height: 80vh;
+                padding-top: 40px;
                 padding-bottom: 60px;
                 align-items: center; 
             }
+            
             .hero-content {
                 margin-top: 0;
+                text-align: center;
             }
-            .hero h1 {
-                font-size: 34px;
-                line-height: 1.2;
-            }
-            .hero p {
-                font-size: 16px;
-                margin-bottom: 30px;
-            }
+            
+            .hero h1 { font-size: 36px; }
+            .hero p { font-size: 16px; margin: 0 auto 30px auto; }
+            
             .hero-buttons {
                 flex-direction: column;
                 gap: 15px;
             }
+            
             .btn-primary, .btn-secondary {
-                text-align: center;
                 width: 100%;
             }
         }
@@ -284,8 +361,8 @@
 
     <!-- ENCABEZADO -->
     <header>
-        <a href="#" class="logo-container">
-            <!-- REEMPLAZA 'logo-icono.png' POR EL NOMBRE DE TU ARCHIVO -->
+        <a href="#inicio" class="logo-container">
+            <!-- Asegúrate de que la imagen se llame exactamente así en tu repositorio -->
             <img src="logo-icono.png" alt="Sayari Logo">
             <span class="logo-text">SAYARI</span>
         </a>
@@ -314,8 +391,8 @@
         </div>
     </section>
 
-    <!-- SECCIÓN BREVE DE SERVICIOS (Basado en tu Facebook) -->
-    <section class="servicios-rapidos" id="servicios">
+    <!-- SECCIÓN SERVICIOS -->
+    <section class="section-container bg-claro" id="servicios">
         <h2>¿Cómo podemos ayudarte?</h2>
         <div class="grid-servicios">
             <div class="card">
@@ -332,6 +409,54 @@
             </div>
         </div>
     </section>
+
+    <!-- SECCIÓN BIOMECÁNICA -->
+    <section class="section-container bg-oscuro" id="biomecanica">
+        <h2>Biomecánica & Tecnología</h2>
+        <div class="text-block">
+            <p>En Sayari no adivinamos, <strong>medimos y analizamos</strong>. Utilizamos principios de la biomecánica avanzada para entender exactamente cómo se mueve tu cuerpo, identificar la raíz de la lesión y diseñar un plan de tratamiento preciso.</p>
+            <p>La integración de tecnología clínica y neurociencia nos permite acelerar tu recuperación, optimizar tu rendimiento y prevenir futuras lesiones, todo adaptado a tu entorno real.</p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN NOSOTROS -->
+    <section class="section-container bg-claro" id="nosotros">
+        <h2>¿Quiénes Somos?</h2>
+        <div class="text-block">
+            <p>En <strong>Sayari</strong> combinamos la neurociencia, la biomecánica y la tecnología clínica para ofrecer una rehabilitación integral.</p>
+            <p>Nuestro objetivo es devolverte la movilidad y mejorar tu calidad de vida, llevando la atención profesional directamente a la comodidad de tu hogar. <em>"El poder de volver a moverte"</em>.</p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CONTACTO -->
+    <section class="section-container bg-oscuro" id="contacto">
+        <h2>Agenda tu Evaluación</h2>
+        <p class="contacto-info">Estamos listos para ayudarte a recuperar tu bienestar.</p>
+        
+        <a href="https://wa.me/51981591871?text=Hola%20Sayari%2C%20quisiera%20agendar%20una%20evaluaci%C3%B3n" target="_blank" class="btn-primary" style="font-size: 18px; padding: 15px 40px;">
+            💬 Hablar por WhatsApp
+        </a>
+        <p class="contacto-email">O escríbenos a: contacto@sayari.com</p>
+    </section>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP (Con ícono SVG real) -->
+    <a href="https://wa.me/51981591871?text=Hola%20Sayari%2C%20quisiera%20agendar%20una%20evaluaci%C3%B3n" class="whatsapp-float" target="_blank" title="Escríbenos por WhatsApp">
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16.005 0C7.165 0 0 7.163 0 16.004c0 2.822.737 5.55 2.15 7.953L.074 32l8.32-2.18a15.94 15.94 0 0 0 7.61 1.925h.007c8.833 0 16-7.163 16-16.004C32 7.163 24.838 0 16.005 0zm0 29.285h-.006a13.33 13.33 0 0 1-6.787-1.857l-.487-.288-5.04 1.322 1.344-4.91-.317-.502a13.267 13.267 0 0 1-2.05-7.046c0-7.335 5.97-13.303 13.31-13.303 3.554 0 6.892 1.386 9.402 3.9a13.19 13.19 0 0 1 3.896 9.408c-.002 7.335-5.97 13.276-13.265 13.276zm7.28-9.945c-.4-.2-2.363-1.166-2.73-1.3-.365-.133-.632-.2-.898.2-.267.4-1.03 1.3-1.264 1.566-.233.267-.466.3-.866.1-.4-.2-1.688-.622-3.216-1.986-1.19-1.06-1.99-2.37-2.223-2.77-.233-.4-.025-.617.175-.816.18-.178.4-.466.6-.7.2-.233.266-.4.4-.666.133-.267.066-.5-.033-.7-.1-.2-.9-2.166-1.233-2.966-.323-.78-.65-.673-.897-.686-.232-.012-.5-.014-.766-.014-.266 0-.7.1-1.066.5-.367.4-1.4 1.366-1.4 3.33 0 1.965 1.433 3.865 1.633 4.13.2.267 2.82 4.302 6.83 6.036.954.413 1.7.66 2.282.845.962.306 1.838.263 2.53.16.77-.115 2.363-.966 2.697-1.9.334-.932.334-1.73.234-1.897-.1-.166-.366-.266-.766-.466z"/>
+        </svg>
+    </a>
+
+    <!-- PIE DE PÁGINA (FOOTER) -->
+    <footer>
+        <p>&copy; 2026 Sayari - Terapia física y Rehabilitación. Todos los derechos reservados.</p>
+        <p>
+            <!-- REEMPLAZA ESTE ENLACE POR EL DE TU FACEBOOK REAL -->
+            <a href="https://www.facebook.com/TuPaginaDeFacebook" target="_blank">Síguenos en Facebook</a>
+        </p>
+    </footer>
+
+</body>
+</html>
 
 </body>
 </html>
